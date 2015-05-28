@@ -15,7 +15,7 @@
     由于时间原因，先将系统的基本功能做个介绍，如果有喜欢的朋友给个支持。 为看得清楚些图片为1366*768
     
     1. 系统主面
-![image](https://github.com/dengxingshuang/coding-online/tree/master/snapshot/home.png)
+![image](/snapshot/home.png)
     
     2. 系统表
 ![image](https://github.com/dengxingshuang/coding-online/tree/master/snapshot/design.png)
