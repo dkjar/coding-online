@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Argo sample page</title>
+<link rel="stylesheet" type="text/css" href="resources/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="resources/easyui/themes/icon.css">
+<link rel="stylesheet" href="resources/bootstrap-3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/bootstrap-3.3.4/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="resources/common/common.css">
+<script src="resources/jquery/jquery-1.11.2.min.js"></script>
+<script src="resources/easyui/jquery.easyui.min.js"></script>
+<script src="resources/lhgdialog/lhgdialog.js?skin=blue"></script>
+<script src="resources/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+<script src="resources/common/common.js"></script>
+</head>
+<body class="login_bg">
+	<div class="container">
+		<form class="form-signin"   method="post">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			
+			<input type="text"  id="number" class="form-control" value="admin" nullmsg="用户名不能为空"> 
+			<input
+				type="password" id="password" class="form-control" value="1" nullmsg="密码不能为空">
+			
+			<div class="checkbox">
+				<label> 
+				<input type="checkbox" value="remember-me">
+					Remember me
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="button" id="login">Sign in</button>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	   
+	
+	<!-- 配置事物管理器，在*ServiceImpl里写@Transactional(rollbackFor=Exception.class)就可以启用事物管理 -->
+	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean> -->
+	<bean name="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	<tx:annotation-driven transaction-manager="transactionManager" order="0"/>
+
+
+	<!-- 拦截器方式配置事物 -->
+	<aop:config expose-proxy="true">
+		<aop:pointcut id="transactionPointcut" expression="(execution(* com.dragon.codingol.service..*(..)) and !execution(* com.dragon.codingol.service.jbpm..*(..)))" />
+		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" order="1"/>
+	</aop:config> 
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+ 			<tx:method name="get*"  propagation="NOT_SUPPORTED"  read-only="true" />
+ 			<tx:method name="find*"  propagation="NOT_SUPPORTED"  read-only="true" />
+ 			<tx:method name="load*"  propagation="NOT_SUPPORTED"  read-only="true" />
+ 			<tx:method name="query*"  propagation="NOT_SUPPORTED"  read-only="true" />
+ 			<tx:method name="singleResult*"  propagation="NOT_SUPPORTED"  read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="codingol-web"
+  id="myeclipse.1428051211881"
+  context-root="/codingol-web"
+  j2ee-spec="1.7"
+  archive="codingol-web.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
